@@ -10,5 +10,11 @@
   gap: 2rem;
   padding: 2rem;
   background-color: #fff;
-  max-width: 28rem;
+  width: 100%;
+}
+
+@media (width >= 40rem) {
+  .counter-card {
+    width: 28rem;
+  }
 }
