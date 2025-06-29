@@ -1,0 +1,16 @@
+.counter-display {
+  font-size: 4.5rem;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+  text-align: center;
+}
+
+.counter-display.positive {
+  color: oklch(62.7% 0.194 149.214);
+}
+.counter-display.negative {
+  color: oklch(57.7% 0.245 27.325);
+}
+.counter-display.zero {
+  color: oklch(27.8% 0.033 256.848);
+}
