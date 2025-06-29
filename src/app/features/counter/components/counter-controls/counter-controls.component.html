@@ -1,0 +1,20 @@
+<div class="counter-controls">
+  <button class="btn btn-decrement" type="button" (click)="decrement.emit()">
+    <span class="btn-content">
+      <fa-icon [icon]="faMinus"></fa-icon>
+      Diminuir
+    </span>
+  </button>
+  <button class="btn btn-reset" type="button" (click)="reset.emit()">
+    <span class="btn-content">
+      <fa-icon [icon]="faSync"></fa-icon>
+      Reiniciar
+    </span>
+  </button>
+  <button class="btn btn-increment" type="button" (click)="increment.emit()">
+    <span class="btn-content">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      Aumentar
+    </span>
+  </button>
+</div>
