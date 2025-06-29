@@ -10,5 +10,5 @@
   gap: 2rem;
   padding: 2rem;
   background-color: #fff;
-  width: 28rem;
+  max-width: 28rem;
 }
