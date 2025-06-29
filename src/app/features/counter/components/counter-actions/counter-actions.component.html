@@ -1,0 +1,11 @@
+<div class="counter-actions">
+  @for (button of buttons(); track button.action) {
+  <app-counter-action-button
+    [icon]="button.icon"
+    [label]="button.label"
+    [class]="button.class"
+    (buttonClick)="onButtonClick(button.action)"
+  >
+  </app-counter-action-button>
+  }
+</div>
