@@ -1,6 +1,6 @@
 .counter-controls {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   justify-content: center;
   gap: 1rem;
 
@@ -52,5 +52,11 @@
         background-color: oklch(62.7% 0.194 149.214);
       }
     }
+  }
+}
+
+@media (width >= 40rem) {
+  .counter-controls {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
