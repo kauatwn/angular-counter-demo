@@ -1,0 +1,45 @@
+.btn {
+  font-family: inherit;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+
+  .btn-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  &.btn-decrement {
+    background-color: oklch(63.7% 0.237 25.331);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(57.7% 0.245 27.325);
+    }
+  }
+
+  &.btn-reset {
+    background-color: oklch(55.1% 0.027 264.364);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(44.6% 0.03 256.802);
+    }
+  }
+
+  &.btn-increment {
+    background-color: oklch(72.3% 0.219 149.579);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(62.7% 0.194 149.214);
+    }
+  }
+}
