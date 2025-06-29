@@ -1,0 +1,14 @@
+:host {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  display: block;
+}
+
+.counter-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  width: 28rem;
+}
