@@ -1,0 +1,24 @@
+.counter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    oklch(58.5% 0.233 277.117),
+    oklch(55.8% 0.288 302.321)
+  );
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.counter-title {
+  color: #fff;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: bold;
+}
+
+.counter-description {
+  color: #fff;
+}
