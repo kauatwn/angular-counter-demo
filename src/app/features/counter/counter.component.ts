@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { CounterControlsComponent } from './components/counter-controls/counter-controls.component';
+import { CounterActionsComponent } from './components/counter-actions/counter-actions.component';
 import { CounterDisplayComponent } from './components/counter-display/counter-display.component';
 import { CounterFooterComponent } from './components/counter-footer/counter-footer.component';
 import { CounterHeaderComponent } from './components/counter-header/counter-header.component';
@@ -9,7 +9,7 @@ import { CounterHeaderComponent } from './components/counter-header/counter-head
   imports: [
     CounterHeaderComponent,
     CounterDisplayComponent,
-    CounterControlsComponent,
+    CounterActionsComponent,
     CounterFooterComponent,
   ],
   templateUrl: './counter.component.html',

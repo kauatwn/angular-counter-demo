@@ -1,10 +1,10 @@
 <app-counter-header></app-counter-header>
 <div class="counter-card">
   <app-counter-display [value]="count()"></app-counter-display>
-  <app-counter-controls
+  <app-counter-actions
     (increment)="increment()"
     (decrement)="decrement()"
     (reset)="reset()"
-  ></app-counter-controls>
+  ></app-counter-actions>
 </div>
 <app-counter-footer></app-counter-footer>
