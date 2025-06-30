@@ -1,8 +1,12 @@
 .counter-display {
   font-size: 4.5rem;
   font-weight: bold;
-  transition: color 0.3s, transform 0.3s;
+  transition: all 0.3s ease;
   text-align: center;
+}
+
+.counter-display.animate {
+  animation: scale 0.3s ease;
 }
 
 .counter-display.positive {
@@ -13,4 +17,27 @@
 }
 .counter-display.zero {
   color: oklch(27.8% 0.033 256.848);
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Respeitar preferências de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .counter-display.animate {
+    animation: none;
+  }
+
+  .counter-display {
+    transition: none;
+  }
 }

@@ -1,5 +1,6 @@
 <div
   class="counter-display"
+  [class.animate]="shouldAnimate()"
   [class.positive]="value() > 0"
   [class.negative]="value() < 0"
   [class.zero]="value() === 0"
