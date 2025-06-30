@@ -14,7 +14,7 @@ O objetivo deste projeto é servir como um exemplo prático e didático de como 
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/en/download) (versão recomendada: 18+)
-- [Angular CLI](https://angular.dev/tools/cli) (versão 19+)
+- [Angular CLI](https://v19.angular.dev/installation) (versão 19+)
 
 ## Como Executar
 
