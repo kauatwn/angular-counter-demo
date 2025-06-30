@@ -17,7 +17,7 @@ import { CounterHeaderComponent } from './components/counter-header/counter-head
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterComponent {
-  count = signal(0);
+  protected readonly count = signal(0);
 
   increment() {
     this.count.update((c) => c + 1);

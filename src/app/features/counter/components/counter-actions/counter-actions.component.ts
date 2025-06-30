@@ -19,7 +19,7 @@ export class CounterActionsComponent {
   decrement = output<void>();
   reset = output<void>();
 
-  buttons = signal([
+  protected readonly buttons = signal([
     {
       icon: faMinus,
       label: 'Diminuir',
