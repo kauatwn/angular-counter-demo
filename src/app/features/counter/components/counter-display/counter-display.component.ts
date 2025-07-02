@@ -1,9 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   effect,
+  inject,
   input,
-  OnDestroy,
   signal,
 } from '@angular/core';
 
@@ -14,7 +15,9 @@ import {
   styleUrl: './counter-display.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CounterDisplayComponent implements OnDestroy {
+export class CounterDisplayComponent {
+  private readonly destroyRef = inject(DestroyRef);
+
   value = input.required<number>();
 
   protected readonly shouldAnimate = signal(false);
@@ -42,12 +45,12 @@ export class CounterDisplayComponent implements OnDestroy {
         this.shouldAnimate.set(false);
       }, 300);
     });
-  }
 
-  ngOnDestroy(): void {
-    // Limpar timeout pendente ao destruir o componente
-    if (this.animationTimeout) {
-      clearTimeout(this.animationTimeout);
-    }
+    // Registrar cleanup usando DestroyRef
+    this.destroyRef.onDestroy(() => {
+      if (this.animationTimeout) {
+        clearTimeout(this.animationTimeout);
+      }
+    });
   }
 }
