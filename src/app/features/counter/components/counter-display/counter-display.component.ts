@@ -14,34 +14,18 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterDisplayComponent {
-  value = input.required<number>();
-
+  protected readonly value = input.required<number>();
   protected readonly shouldAnimate = signal(false);
-  private animationTimeout?: ReturnType<typeof setTimeout>;
 
-  // Effect como propriedade - abordagem moderna e declarativa
-  private setupAnimation = effect((onCleanup) => {
-    // Reagir a mudanças no value
+  private readonly setupAnimation = effect((onCleanup) => {
     this.value();
 
-    // Limpar timeout anterior para evitar conflitos
-    if (this.animationTimeout) {
-      clearTimeout(this.animationTimeout);
-    }
-
-    // Ativar animação
     this.shouldAnimate.set(true);
 
-    // Desativar animação após a duração da animação
-    this.animationTimeout = setTimeout(() => {
+    const timer = setTimeout(() => {
       this.shouldAnimate.set(false);
     }, 300);
 
-    // Cleanup function seguindo a documentação oficial do Angular
-    onCleanup(() => {
-      if (this.animationTimeout) {
-        clearTimeout(this.animationTimeout);
-      }
-    });
+    onCleanup(() => clearTimeout(timer));
   });
 }
