@@ -1,9 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   effect,
-  inject,
   input,
   signal,
 } from '@angular/core';
@@ -16,41 +14,34 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterDisplayComponent {
-  private readonly destroyRef = inject(DestroyRef);
-
   value = input.required<number>();
 
   protected readonly shouldAnimate = signal(false);
   private animationTimeout?: ReturnType<typeof setTimeout>;
 
-  constructor() {
-    this.setupAnimation();
-  }
+  // Effect como propriedade - abordagem moderna e declarativa
+  private setupAnimation = effect((onCleanup) => {
+    // Reagir a mudanças no value
+    this.value();
 
-  private setupAnimation(): void {
-    effect(() => {
-      // Reagir a mudanças no value
-      this.value();
+    // Limpar timeout anterior para evitar conflitos
+    if (this.animationTimeout) {
+      clearTimeout(this.animationTimeout);
+    }
 
-      // Limpar timeout anterior para evitar conflitos
-      if (this.animationTimeout) {
-        clearTimeout(this.animationTimeout);
-      }
+    // Ativar animação
+    this.shouldAnimate.set(true);
 
-      // Ativar animação
-      this.shouldAnimate.set(true);
+    // Desativar animação após a duração da animação
+    this.animationTimeout = setTimeout(() => {
+      this.shouldAnimate.set(false);
+    }, 300);
 
-      // Desativar animação após a duração da animação
-      this.animationTimeout = setTimeout(() => {
-        this.shouldAnimate.set(false);
-      }, 300);
-    });
-
-    // Registrar cleanup usando DestroyRef
-    this.destroyRef.onDestroy(() => {
+    // Cleanup function seguindo a documentação oficial do Angular
+    onCleanup(() => {
       if (this.animationTimeout) {
         clearTimeout(this.animationTimeout);
       }
     });
-  }
+  });
 }
