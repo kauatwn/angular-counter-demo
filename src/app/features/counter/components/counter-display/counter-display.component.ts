@@ -14,7 +14,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterDisplayComponent {
-  protected readonly value = input.required<number>();
+  readonly value = input.required<number>();
   protected readonly shouldAnimate = signal(false);
 
   private readonly setupAnimation = effect((onCleanup) => {
