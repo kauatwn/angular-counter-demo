@@ -1,17 +1,10 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CounterActionsComponent } from './components/counter-actions/counter-actions.component';
 import { CounterDisplayComponent } from './components/counter-display/counter-display.component';
-import { CounterFooterComponent } from './components/counter-footer/counter-footer.component';
-import { CounterHeaderComponent } from './components/counter-header/counter-header.component';
 
 @Component({
   selector: 'app-counter',
-  imports: [
-    CounterHeaderComponent,
-    CounterDisplayComponent,
-    CounterActionsComponent,
-    CounterFooterComponent,
-  ],
+  imports: [CounterDisplayComponent, CounterActionsComponent],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

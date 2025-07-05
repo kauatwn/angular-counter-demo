@@ -1,5 +1,9 @@
 <main>
-  <app-counter-header></app-counter-header>
+  <header class="counter-header">
+    <h1 class="counter-title">Contador Interativo</h1>
+    <p class="counter-description">Aumente, diminua ou reinicie</p>
+  </header>
+
   <section class="counter-card">
     <app-counter-display [value]="count()"></app-counter-display>
     <app-counter-actions
@@ -8,5 +12,8 @@
       (reset)="reset()"
     ></app-counter-actions>
   </section>
-  <app-counter-footer></app-counter-footer>
+
+  <footer class="counter-footer">
+    <p class="counter-footer__text">Clique nos botões para alterar o valor</p>
+  </footer>
 </main>

@@ -1,11 +1,12 @@
 <section class="counter-actions" aria-label="Ações do contador">
-  @for (button of buttons(); track button.action) {
-  <app-counter-action-button
-    [icon]="button.icon"
-    [label]="button.label"
-    [class]="button.class"
-    (buttonClick)="onButtonClick(button.action)"
+  @for (button of buttons(); track button.class) {
+  <button
+    [class]="button.computedClass"
+    (click)="button.action()"
+    [attr.aria-label]="button.ariaLabel"
   >
-  </app-counter-action-button>
+    <fa-icon [icon]="button.icon"></fa-icon>
+    <span>{{ button.label }}</span>
+  </button>
   }
 </section>

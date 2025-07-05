@@ -4,6 +4,31 @@
   display: block;
 }
 
+.counter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    oklch(58.5% 0.233 277.117),
+    oklch(55.8% 0.288 302.321)
+  );
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.counter-title {
+  color: #fff;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: bold;
+}
+
+.counter-description {
+  color: #fff;
+}
+
 .counter-card {
   display: flex;
   flex-direction: column;
@@ -11,6 +36,19 @@
   padding: 2rem;
   background-color: #fff;
   width: 100%;
+}
+
+.counter-footer {
+  background-color: oklch(98.5% 0.002 247.839);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.counter-footer__text {
+  color: oklch(44.6% 0.03 256.802);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 @media (width >= 40rem) {

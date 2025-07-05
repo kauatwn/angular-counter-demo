@@ -1,15 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   output,
-  signal,
 } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMinus, faPlus, faSync } from '@fortawesome/free-solid-svg-icons';
-import { CounterActionButtonComponent } from '../counter-action-button/counter-action-button.component';
 
 @Component({
   selector: 'app-counter-actions',
-  imports: [CounterActionButtonComponent],
+  imports: [FontAwesomeModule],
   templateUrl: './counter-actions.component.html',
   styleUrl: './counter-actions.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,35 +19,40 @@ export class CounterActionsComponent {
   decrement = output<void>();
   reset = output<void>();
 
-  protected readonly buttons = signal([
+  private readonly actions = {
+    decrement: () => this.decrement.emit(),
+    reset: () => this.reset.emit(),
+    increment: () => this.increment.emit(),
+  } as const;
+
+  private readonly buttonsData = [
     {
       icon: faMinus,
       label: 'Diminuir',
-      action: 'decrement',
+      action: this.actions.decrement,
       class: 'btn-decrement',
+      ariaLabel: 'Diminuir contador',
     },
     {
       icon: faSync,
       label: 'Reiniciar',
-      action: 'reset',
+      action: this.actions.reset,
       class: 'btn-reset',
+      ariaLabel: 'Reiniciar contador',
     },
     {
       icon: faPlus,
       label: 'Aumentar',
-      action: 'increment',
+      action: this.actions.increment,
       class: 'btn-increment',
+      ariaLabel: 'Aumentar contador',
     },
-  ]);
+  ];
 
-  private readonly actionMap = {
-    increment: () => this.increment.emit(),
-    decrement: () => this.decrement.emit(),
-    reset: () => this.reset.emit(),
-  } as const;
-
-  onButtonClick(action: string) {
-    const actionHandler = this.actionMap[action as keyof typeof this.actionMap];
-    actionHandler?.();
-  }
+  protected readonly buttons = computed(() =>
+    this.buttonsData.map((button) => ({
+      ...button,
+      computedClass: `btn ${button.class}`,
+    }))
+  );
 }
