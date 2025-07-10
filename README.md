@@ -64,11 +64,8 @@ angular-counter-demo/
     │   ├── features/
     │   │   └── counter/
     │   │       ├── components/
-    │   │       │   ├── counter-action-button/
     │   │       │   ├── counter-actions/
-    │   │       │   ├── counter-display/
-    │   │       │   ├── counter-footer/
-    │   │       │   └── counter-header/
+    │   │       │   └── counter-display/
     │   │       └── counter.component.*
     │   ├── app.component.*
     │   ├── app.config.ts
