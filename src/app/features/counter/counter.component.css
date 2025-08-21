@@ -51,8 +51,113 @@
   line-height: 1.25rem;
 }
 
+/* Estilos do display do contador */
+.counter-display {
+  font-size: 4.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.counter-display.animate {
+  animation: scale 0.3s ease;
+}
+
+.counter-display.positive {
+  color: oklch(62.7% 0.194 149.214);
+}
+
+.counter-display.negative {
+  color: oklch(57.7% 0.245 27.325);
+}
+
+.counter-display.zero {
+  color: oklch(27.8% 0.033 256.848);
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos das ações do contador */
+.counter-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.btn {
+  font-family: inherit;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+
+  &.btn-decrement {
+    background-color: oklch(63.7% 0.237 25.331);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(57.7% 0.245 27.325);
+    }
+  }
+
+  &.btn-reset {
+    background-color: oklch(55.1% 0.027 264.364);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(44.6% 0.03 256.802);
+    }
+  }
+
+  &.btn-increment {
+    background-color: oklch(72.3% 0.219 149.579);
+    color: #fff;
+
+    &:hover {
+      background-color: oklch(62.7% 0.194 149.214);
+    }
+  }
+}
+
+/* Respeitar preferências de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .counter-display.animate {
+    animation: none;
+  }
+
+  .counter-display {
+    transition: none;
+  }
+}
+
 @media (width >= 40rem) {
   .counter-card {
     width: 28rem;
+  }
+
+  .counter-actions {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

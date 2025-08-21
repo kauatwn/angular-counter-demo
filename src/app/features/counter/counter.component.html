@@ -5,12 +5,29 @@
   </header>
 
   <section class="counter-card">
-    <app-counter-display [value]="count()"></app-counter-display>
-    <app-counter-actions
-      (increment)="increment()"
-      (decrement)="decrement()"
-      (reset)="reset()"
-    ></app-counter-actions>
+    <section
+      class="counter-display"
+      [class.animate]="shouldAnimate()"
+      [class.positive]="count() > 0"
+      [class.negative]="count() < 0"
+      [class.zero]="count() === 0"
+      aria-label="Valor atual do contador"
+    >
+      <span role="status" aria-live="polite">{{ count() }}</span>
+    </section>
+
+    <section class="counter-actions" aria-label="Ações do contador">
+      @for (button of buttons; track button.className) {
+      <button
+        [class]="button.className"
+        (click)="button.action()"
+        [attr.aria-label]="button.ariaLabel"
+      >
+        <fa-icon [icon]="button.icon"></fa-icon>
+        <span>{{ button.label }}</span>
+      </button>
+      }
+    </section>
   </section>
 
   <footer class="counter-footer">
